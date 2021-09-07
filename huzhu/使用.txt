@@ -1,0 +1,4 @@
+国外
+docker exec -it qinglong bash -c "$(curl -fsSL https://git.io/JuZmI)" 
+国内
+docker exec -it qinglong bash -c "$(curl -fsSL https://gitee.com/yanyuwangluo/tuku/raw/main/huzhu/huzhu.sh)" 

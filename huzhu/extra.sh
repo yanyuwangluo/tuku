@@ -26,7 +26,7 @@ OtherRepo=() ##示例：OtherRepo=(1 3)
 dependencies="no" ##yes为安装，no为不安装
 package_name="canvas png-js date-fns axios crypto-js ts-md5 tslib @types/node dotenv typescript fs require tslib"
 ## 3. Ninja 是否需要启动和更新设置
-Ninja="on" ##up为更新，on为启动，down为不运行
+Ninja="down" ##up为更新，on为启动，down为不运行
 
 
 #------ 编号区 ------#
