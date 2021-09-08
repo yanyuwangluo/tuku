@@ -704,3 +704,19 @@ export NOTIFY_COMPTOGROUP2="false" ##true为推送到群组2
 ### 6. 屏蔽ck失效通知
 ### 执行东东农场等脚本时有CK失效也不会推送ck失效通知
 export NOTIFY_NOCKFALSE="true"
+#京东试用
+export JD_TRY_PRICE="50"
+export JD_TRY_TITLEFILTERS="早餐奶@产后修复@体验装@腮红@袜子一双@睫毛胶水@儿童牛奶@牙刷头@灵芝@孢子@除臭@鼻炎@口罩@宠物@和田玉@祛痘@解酒@教程@软件@英语@辅导@培训@流量卡@保护套@手机壳@衣架@戒烟@棉签@网课@擦杯布@驱蚊@刷头@卸妆@互动课@小靓美@脚气@文胸@卷尺@种子@档案袋@癣@中年@老太太@妇女@私处@孕妇@卫生巾@卫生条@课@培训@阴道@生殖器@肛门@狐臭@少女内衣@胸罩@洋娃娃@益智@少女@女性内衣@女性内裤@女内裤@女内衣@女孩@屏风底座@童装@吊带@黑丝@钢圈@婴儿@儿童@玩具@幼儿@娃娃@网课@网校@电商@手机壳@钢化膜@网络课程@女纯棉@三角裤@美少女@纸尿裤@英语@俄语@四级@六级@四六级@在线网络@在线@阴道炎@宫颈@糜烂@打底裤@手机膜@鱼@狗"
+export JD_TRY_PASSZC="true"
+#白名单
+export JD_TRY_WHITELIST="避孕套@润滑液@振动@AV@筋膜枪@震动@肛塞 "
+export JD_TRY="true"
+export JD_TRY_TRIALPRICE="0"
+#最小提供数量
+export JD_TRY_MINSUPPLYNUM="0"
+export JD_TRY_TABID="1@2@3@4@5@6@7@8@9@10@11@12@13@14@15@16"
+export JD_TRY_PLOG="true"
+export JD_TRY_MAXLENGTH="100"
+export JD_TRY_APPLYNUMFILTER="10000"
+## 京东试用，只试用100块以上的东西
+export JD_TRY_TRIALPRICE="10"
