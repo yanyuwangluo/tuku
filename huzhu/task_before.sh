@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Build 20210829-001
+# Build 20210915-001
 
 name_js=(
   jd_fruit
