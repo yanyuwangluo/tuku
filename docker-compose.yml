@@ -1,0 +1,77 @@
+version: '2.0'
+services:
+##第一个青龙
+  q1:
+    image: whyour/qinglong:latest
+    container_name: ql1
+    restart: always
+    volumes:
+       - $PWD/ql1/config:/ql/config
+       - $PWD/ql1/scripts:/ql/scripts
+       - $PWD/ql1/repo:/ql/repo
+       - $PWD/ql1/log:/ql/log
+       - $PWD/ql1/db:/ql/db
+       - $PWD/ql1/jbot:/ql/jbot
+       - $PWD/ql1/raw:/ql/raw
+    ports:
+       - 5801:5700
+##第二个青龙
+  q2:
+    image: whyour/qinglong:latest
+    container_name: ql2
+    restart: always
+    volumes:
+       - $PWD/ql2/config:/ql/config
+       - $PWD/ql2/scripts:/ql/scripts
+       - $PWD/ql2/repo:/ql/repo
+       - $PWD/ql2/log:/ql/log
+       - $PWD/ql2/db:/ql/db
+       - $PWD/ql2/jbot:/ql/jbot
+       - $PWD/ql2/raw:/ql/raw
+    ports:
+       - 5802:5700
+##第三个青龙
+  q3:
+    image: whyour/qinglong:latest
+    container_name: ql3
+    restart: always
+    volumes:
+       - $PWD/ql3/config:/ql/config
+       - $PWD/ql3/scripts:/ql/scripts
+       - $PWD/ql3/repo:/ql/repo
+       - $PWD/ql3/log:/ql/log
+       - $PWD/ql3/db:/ql/db
+       - $PWD/ql3/jbot:/ql/jbot
+       - $PWD/ql3/raw:/ql/raw
+    ports:
+       - 5803:5700
+##第四个青龙
+  q4:
+    image: whyour/qinglong:latest
+    container_name: ql4
+    restart: always
+    volumes:
+       - $PWD/ql4/config:/ql/config
+       - $PWD/ql4/scripts:/ql/scripts
+       - $PWD/ql4/repo:/ql/repo
+       - $PWD/ql4/log:/ql/log
+       - $PWD/ql4/db:/ql/db
+       - $PWD/ql4/jbot:/ql/jbot
+       - $PWD/ql4/raw:/ql/raw
+    ports:
+       - 5804:5700
+##第五个青龙
+  q5:
+    image: whyour/qinglong:latest
+    container_name: ql5
+    restart: always
+    volumes:
+       - $PWD/ql5/config:/ql/config
+       - $PWD/ql5/scripts:/ql/scripts
+       - $PWD/ql5/repo:/ql/repo
+       - $PWD/ql5/log:/ql/log
+       - $PWD/ql5/db:/ql/db
+       - $PWD/ql5/jbot:/ql/jbot
+       - $PWD/ql5/raw:/ql/raw
+    ports:
+       - 5805:5700
