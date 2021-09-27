@@ -24,7 +24,7 @@ CollectedRepo=(4) ##示例：CollectedRepo=(2 4 6)
 OtherRepo=() ##示例：OtherRepo=(1 3)
 ## 2. 是否安装依赖和安装依赖包的名称设置
 dependencies="no" ##yes为安装，no为不安装
-package_name="canvas png-js date-fns axios crypto-js ts-md5 tslib @types/node dotenv typescript fs require tslib"
+package_name="canvas png-js date-fns axios crypto-js ts-md5 tslib @types/node dotenv typescript fs require jsdom form-data"
 ## 3. Ninja 是否需要启动和更新设置
 Ninja="down" ##up为更新，on为启动，down为不运行
 
