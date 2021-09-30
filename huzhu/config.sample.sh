@@ -593,4 +593,8 @@ export JD_OPENCARD_COOL_SUMMER2=""
 export guaopencard_addSku40="true"
 export guaopencard40="true"
 ##---------------其他变量----------------------------###
+<<<<<<< HEAD
 #需要其他变量往下写就行
+=======
+#需要其他变量往下写就行
+>>>>>>> bc309822224db6ceb5b33c41984444e10da097f7
