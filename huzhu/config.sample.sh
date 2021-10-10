@@ -588,9 +588,11 @@ export JD_OPENCARD_EAT_OPEN_OPENCARD=""
 ## 8、8.5-8.12 大牌联合 冰爽一夏 钜惠送好礼
 ### 填写11就是跑到11个ck就停止，填写21就是跑到21个ck就停止，一天最多助力20个ck，推荐10的倍数 +1 填写！！
 export JD_OPENCARD_COOL_SUMMER2=""
-#临时开卡变量（青蛙仓库）
+### 开卡系列通用变量 设置一次永久生效（青蛙仓库）
 # ql repo https://github.com/smiek2221/scripts.git "jd_|gua_" "" "ZooFaker_Necklace.js|JDJRValidator_Pure.js|sign_graphics_validate.js"
-export guaopencard_addSku40="true"
-export guaopencard40="true"
+export guaopencard_All="true"
+export guaopencard_addSku_All="true"
+export guaopencardRun_All="true"
+export guaopencard_draw="true"
 ##---------------其他变量----------------------------###
 #需要其他变量往下写就行
