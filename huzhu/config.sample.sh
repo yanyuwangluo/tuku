@@ -18,7 +18,7 @@ RepoFileExtensions="js py ts"
 GithubProxyUrl="https://ghproxy.com/"
 
 ## 设置定时任务执行的超时时间，默认1h，后缀"s"代表秒(默认值), "m"代表分, "h"代表小时, "d"代表天
-CommandTimeoutTime="3h"
+CommandTimeoutTime="1d"
 
 ## 设置批量执行任务时的并发数，默认同时执行5个任务
 MaxConcurrentNum="20"
@@ -85,7 +85,7 @@ export QYWX_KEY=""
 ## 6. 企业微信应用
 ## 参考文档：http://note.youdao.com/s/HMiudGkb
 ## 下方填写素材库图片id（corpid,corpsecret,touser,agentid），素材库图片填0为图文消息, 填1为纯文本消息
-export QYWX_AM=""
+export QYWX_AM="ww1ebc8a5888cad6e0,TfnD7xfapSqvxNvekZxQIQv3OozE3XK1cqbIJKQVwVk,@all,1000002,2cyJLgypn5kDcrtYSrCfDXhGH_0XE4XJKLHlU6-obTnE"
 
 ## 7. iGot聚合
 ## 参考文档：https://wahao.github.io/Bark-MP-helper
@@ -261,7 +261,7 @@ export JXNC_NOTIFY_LEVEL="3"
 ## 1、京东领现金红包兑换京豆开关。false为不换,true为换(花费2元红包兑换200京豆，一周可换四次)，默认为false
 export CASH_EXCHANGE="false"
 ## 2、宠汪汪喂食数量。可以填的数字0,10,20,40,80,其他数字不可
-export JOY_FEED_COUNT="10"
+export JOY_FEED_COUNT="80"
 ## 3、宠汪汪帮好友喂食。默认 "false" 不会自动给好友的汪汪喂食，如想自动喂食，请修改为 "true"
 export JOY_HELP_FEED="true"
 ## 4、宠汪汪是否赛跑(默认参加双人赛跑)。false为不跑,true为跑
@@ -400,9 +400,9 @@ export yqm="" ##你的邀请码
 ### 运行一次查看邀请码 变量你的邀请码 
 export shareCode=""
 ## 10、省钱大赢家本期活动ID
-export redEnvelopeId="" 
+export redEnvelopeId="50cf9158e57c4b10a66346f766e485ad52501633747932489" 
 ## 11、省钱大赢家邀请码
-export inviter=""
+export inviter="5Hg1FqnreOEECJIzfitLLsPHCLqwgC17jt1d_N4tUms"
 ## 12、签到领现金添加变量方式
 ## 自行添加变量设置邀请码 格式如下 默认10个
 export cashinviteCode=""
@@ -495,7 +495,8 @@ export jd_zdjr_activityId=""
 export jd_zdjr_activityUrl=""
 ## 39、开卡
 export guaunknownTask_addSku_All="true" ##开卡任务
-
+##互助
+export gua_wealth_island_codeId="1,3,5"
 # cdle 环境变量
 ## 1、全民运动会守卫红包
 ### 助力码，需手动抓包
@@ -512,7 +513,7 @@ export cashHelpPins="$(echo $JD_COOKIE | sed "s/&/\n/g; s/\S*pt_pin=\([^;]\+\);\
 export kois="$(echo $JD_COOKIE | sed "s/&/\n/g; s/\S*pt_pin=\([^;]\+\);\S*/\1/g; s/\n/@/g;")"
 ## 5、发财大赢家助力
 ### 需要设置环境变量dyjHelpPins来指定要助力的账号
-export dyjHelpPins="$(echo $JD_COOKIE | sed "s/&/\n/g; s/\S*pt_pin=\([^;]\+\);\S*/\1/g; s/\n/@/g;")"
+export dyjHelpPins="pt_pin=jd_4022a1a1119b0"
 ## 6、早起赢现金
 ### 入口：京东汽车-瓜分万元
 ### 备注：支付一元才能参与活动，填写环境变量morningScPins给指定账号打卡
@@ -559,8 +560,6 @@ export JD_HEALTH_REWARD_NAME="20" ##只能兑换京豆，填写纯数字20 10 5 
 ## 1、清空购物车
 ### 将需要跳过清理的账号(cookie中的pt_pin)放到变量CleanUsers中，多个用@隔开
 export CleanUsers=""
-#清空购物车运行
-export JD_CART="true"
 
 # Tsukasa007 环境变量
 ## 1、7.28-8.6 定格夺冠
@@ -588,11 +587,34 @@ export JD_OPENCARD_EAT_OPEN_OPENCARD=""
 ## 8、8.5-8.12 大牌联合 冰爽一夏 钜惠送好礼
 ### 填写11就是跑到11个ck就停止，填写21就是跑到21个ck就停止，一天最多助力20个ck，推荐10的倍数 +1 填写！！
 export JD_OPENCARD_COOL_SUMMER2=""
-### 开卡系列通用变量 设置一次永久生效（青蛙仓库）
-# ql repo https://github.com/smiek2221/scripts.git "jd_|gua_" "" "ZooFaker_Necklace.js|JDJRValidator_Pure.js|sign_graphics_validate.js"
+#清空购物车
+export JD_CART="true"
+
+### 开卡系列通用变量 设置一次永久生效
 export guaopencard_All="true"
 export guaopencard_addSku_All="true"
 export guaopencardRun_All="true"
 export guaopencard_draw="true"
+
+##ccwav一对一推送
+#推荐用一对一资产推送重新拉一下ccwav大佬的仓库，用这个命令
+# ql repo https://github.com/ccwav/QLScript2.git "jd_" "NoUsed" "ql|sendNotify|utils"
+export WP_APP_TOKEN_ONE="xxxxxxxx"
+# 用 WxPusher 进行一对一推送
+#填写变量 WP_APP_TOKEN_ONE,可在管理台查看: https://wxpusher.zjiecode.com/admin/main/app/appToken
+#手动建立CK_WxPusherUid.json,可以参考CKName_cache.json,只是nickName改成Uid，
+#每个用户的uid可在管理台查看: https://wxpusher.zjiecode.com/admin/main/wxuser/list
+#CK_WxPusherUid.json 内容:
+#[
+#  {
+#	"pt_pin": "ccwav",
+#	"Uid": "UID_AAAAAAAA"
+#  },
+#  {
+#	"pt_pin": "ccwav2",
+#	"Uid": "BBBBBBBBBB"
+#  }
+#]
+
 ##---------------其他变量----------------------------###
-#需要其他变量往下写就行
+#需要其变量加就行
