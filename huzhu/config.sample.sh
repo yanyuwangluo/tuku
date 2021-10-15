@@ -85,7 +85,7 @@ export QYWX_KEY=""
 ## 6. 企业微信应用
 ## 参考文档：http://note.youdao.com/s/HMiudGkb
 ## 下方填写素材库图片id（corpid,corpsecret,touser,agentid），素材库图片填0为图文消息, 填1为纯文本消息
-export QYWX_AM="ww1ebc8a5888cad6e0,TfnD7xfapSqvxNvekZxQIQv3OozE3XK1cqbIJKQVwVk,@all,1000002,2cyJLgypn5kDcrtYSrCfDXhGH_0XE4XJKLHlU6-obTnE"
+export QYWX_AM=""
 
 ## 7. iGot聚合
 ## 参考文档：https://wahao.github.io/Bark-MP-helper
