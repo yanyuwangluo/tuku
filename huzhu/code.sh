@@ -12,11 +12,12 @@ dir_shell=/ql/shell
 repo1='yuannian1112_jd_scripts'                    #预设的 yuannian 仓库
 repo2='JDHelloWorld_jd_scripts'                    #预设的 JDHelloWorld 仓库
 repo3='he1pu_JDHelp'                               #预设的 he1pu 仓库
-repo4='shufflewzc_faker2'                          #预设的 faker2 仓库
-repo5='Wenmoux_scripts_wen_chinnkarahoi'           #预设的 Wenmoux 仓库，用于读取口袋书店互助码。需提前拉取温某人的仓库或口袋书店脚本并完整运行。
-repo6='Aaron-lv_sync_jd_scripts'                   #预设的 Aaron-lv 仓库
-repo7='smiek2221_scripts'                          #预设的 smiek2221 仓库
-repo=$repo4                                        #默认调用 shufflewzc_faker2 仓库脚本日志
+repo4='shufflewzc_faker3'                          #预设的 faker3 仓库
+repo5='shufflewzc/faker2'                          #预设的 faker2 仓库
+repo6='Wenmoux_scripts_wen_chinnkarahoi'           #预设的 Wenmoux 仓库，用于读取口袋书店互助码。需提前拉取温某人的仓库或口袋书店脚本并完整运行。
+repo7='Aaron-lv_sync_jd_scripts'                   #预设的 Aaron-lv 仓库
+repo8='smiek2221_scripts'                          #预设的 smiek2221 仓库
+repo=$repo4                                        #默认调用 shufflewzc_faker3 仓库脚本日志
 
 ## 调试模式开关，默认是0，表示关闭；设置为1，表示开启
 DEBUG="1"
@@ -79,7 +80,7 @@ UpdateType="1"
 ## 定义是否自动安装或修复缺失的依赖，默认为1，表示自动修复；留空或其他数值表示不修复。
 FixDependType="1"
 ## 定义监控修复的依赖名称
-package_name="@types/node axios canvas crypto-js date-fns dotenv fs jsdom png-js require ts-md5 tslib typescript"
+package_name="canvas png-js date-fns axios crypto-js ts-md5 tslib @types/node dotenv typescript fs require jsdom form-data"
 
 ## 需组合的环境变量列表，env_name需要和var_name一一对应，如何有新活动按照格式添加(不懂勿动)
 env_name=(
