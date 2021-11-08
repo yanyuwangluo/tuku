@@ -14,12 +14,12 @@ echo -e "\e[36m
 \e[0m\n"
 
 DOCKER_IMG_NAME="whyour/qinglong"
-QL_PATH=""
+JD_PATH=""
 SHELL_FOLDER=$(pwd)
 CONTAINER_NAME=""
 TAG="latest"
 NETWORK="bridge"
-QL_PORT=5700
+JD_PORT=5700
 
 HAS_IMAGE=false
 PULL_IMAGE=true
@@ -80,24 +80,23 @@ docker_install() {
 docker_install
 warn "降低学习成本，小白回车到底，一路默认选择"
 # 配置文件保存目录
-echo -n -e "\e[33m一、请输入配置文件保存的绝对路径（示例：/root/ql1)，回车默认为 当前目录/ql:\e[0m"
-read ql_path
-if [ -z "$ql_path" ]; then
-    mkdir -p $SHELL_FOLDER/ql
-    QL_PATH=$SHELL_FOLDER/ql
-elif [ -d "$ql_path" ]; then
-    QL_PATH=$ql_path
+echo -n -e "\e[33m一、请输入配置文件保存的绝对路径（示例：/root)，回车默认为当前目录:\e[0m"
+read jd_path
+if [ -z "$jd_path" ]; then
+    JD_PATH=$SHELL_FOLDER
+elif [ -d "$jd_path" ]; then
+    JD_PATH=$jd_path
 else
-    mkdir -p $ql_path
-    QL_PATH=$ql_path
+    mkdir -p $jd_path
+    JD_PATH=$jd_path
 fi
-CONFIG_PATH=$QL_PATH/config
-DB_PATH=$QL_PATH/db
-REPO_PATH=$QL_PATH/repo
-RAW_PATH=$QL_PATH/raw
-SCRIPT_PATH=$QL_PATH/scripts
-LOG_PATH=$QL_PATH/log
-JBOT_PATH=$QL_PATH/jbot
+CONFIG_PATH=$JD_PATH/ql/config
+DB_PATH=$JD_PATH/ql/db
+REPO_PATH=$JD_PATH/ql/repo
+RAW_PATH=$JD_PATH/ql/raw
+SCRIPT_PATH=$JD_PATH/ql/scripts
+LOG_PATH=$JD_PATH/ql/log
+JBOT_PATH=$JD_PATH/ql/jbot
 
 # 检测镜像是否存在
 if [ ! -z "$(docker images -q $DOCKER_IMG_NAME:$TAG 2> /dev/null)" ]; then
@@ -140,7 +139,7 @@ input_container_name() {
 input_container_name
 
 # 是否安装 WatchTower
-inp "是否安装 containrrr/watchtower 自动更新 Docker 容器：\n1) 安装\n2) 不安装[默认]"
+inp "是否安装 containrrr/watchtower 自动更新 Docker 容器：\n1) 安装\n2) 不安装[默认](可以不装)"
 opt
 read watchtower
 if [ "$watchtower" = "1" ]; then
@@ -152,8 +151,7 @@ opt
 read net
 if [ "$net" = "1" ]; then
     NETWORK="host"
-    MAPPING_QL_PORT=""
-    MAPPING_NINJA_PORT=""
+    MAPPING_JD_PORT=""
 fi
 
 inp "是否在启动容器时自动启动挂机程序：\n1) 开启[默认]\n2) 关闭"
@@ -170,6 +168,14 @@ if [ "$pannel" = "2" ]; then
     ENABLE_WEB_PANNEL_ENV=""
 fi
 
+#inp "是否安装 Ninja：\n1) 安装[默认]\n2) 不安装"
+#opt
+#read Ninja
+#if [ "$Ninja" = "2" ]; then
+#    INSTALL_NINJA=false
+#    MAPPING_NINJA_PORT=""
+#fi
+
 # 端口问题
 modify_ql_port() {
     inp "是否修改青龙端口[默认 5700]：\n1) 修改\n2) 不修改[默认]"
@@ -177,17 +183,26 @@ modify_ql_port() {
     read change_ql_port
     if [ "$change_ql_port" = "1" ]; then
         echo -n -e "\e[36m输入您想修改的端口->\e[0m"
-        read QL_PORT
+        read JD_PORT
     fi
 }
-
+#modify_Ninja_port() {
+#    inp "是否修改 Ninja 端口[默认 5701]：\n1) 修改\n2) 不修改[默认]"
+#    opt
+#    read change_Ninja_port
+#    if [ "$change_Ninja_port" = "1" ]; then
+#        echo -n -e "\e[36m输入您想修改的端口->\e[0m"
+#        read NINJA_PORT
+#    fi
+#}
 if [ "$NETWORK" = "bridge" ]; then
     inp "是否映射端口：\n1) 映射[默认]\n2) 不映射"
     opt
     read port
     if [ "$port" = "2" ]; then
-        MAPPING_QL_PORT=""
-    fi
+        MAPPING_JD_PORT=""
+    else
+        modify_ql_port    fi
 fi
 
 
@@ -222,13 +237,21 @@ check_port() {
     netstat -tlpn | grep "\b$1\b"
 }
 if [ "$port" != "2" ]; then
-    while check_port $QL_PORT; do    
-        echo -n -e "\e[31m端口:$QL_PORT 被占用，请重新输入青龙面板端口：\e[0m"
-        read QL_PORT
+    while check_port $JD_PORT; do    
+        echo -n -e "\e[31m端口:$JD_PORT 被占用，请重新输入青龙面板端口：\e[0m"
+        read JD_PORT
     done
-    echo -e "\e[34m恭喜，端口:$QL_PORT 可用\e[0m"
-    MAPPING_QL_PORT="-p $QL_PORT:5700"
+    echo -e "\e[34m恭喜，端口:$JD_PORT 可用\e[0m"
+    MAPPING_JD_PORT="-p $JD_PORT:5700"
 fi
+#if [ "$Ninja" != "2" ]; then
+#    while check_port $NINJA_PORT; do    
+#        echo -n -e "\e[31m端口:$NINJA_PORT 被占用，请重新输入 Ninja 面板端口：\e[0m"
+#        read NINJA_PORT
+#    done
+#    echo -e "\e[34m恭喜，端口:$NINJA_PORT 可用\e[0m"
+#    MAPPING_NINJA_PORT="-p $NINJA_PORT:5701"
+#fi
 
 
 log "3.开始创建容器并执行"
@@ -241,7 +264,7 @@ docker run -dit \
     -v $RAW_PATH:/ql/raw \
     -v $SCRIPT_PATH:/ql/scripts \
     -v $JBOT_PATH:/ql/jbot \
-    $MAPPING_QL_PORT \
+    $MAPPING_JD_PORT \
     --name $CONTAINER_NAME \
     --hostname qinglong \
     --restart always \
@@ -271,27 +294,67 @@ if [ ! -f "$CONFIG_PATH/config.sh" ]; then
     if [ $? -ne 0 ] ; then
         cancelrun "** 错误：找不到配置文件！"
     fi
- fi
-
+fi
 log "4.下面列出所有容器"
 docker ps
 
 # Nginx 静态解析检测
-log "5.开始检测 Nginx 静态解析"
-echo "开始扫描静态解析是否在线！"
-ps -fe|grep nginx|grep -v grep
-if [ $? -ne 0 ]; then
-    echo "$(date +%Y-%m-%d" "%H:%M:%S) 扫描结束！Nginx 静态解析停止！准备重启！"
-    docker exec -it $CONTAINER_NAME nginx -c /etc/nginx/nginx.conf
-    echo "$(date +%Y-%m-%d" "%H:%M:%S) Nginx 静态解析重启完成！"
+#log "5.开始检测 Nginx 静态解析"
+#echo "开始扫描静态解析是否在线！"
+#ps -fe|grep nginx|grep -v grep
+#if [ $? -ne 0 ]; then
+#    echo "$(date +%Y-%m-%d" "%H:%M:%S) 扫描结束！Nginx 静态解析停止！准备重启！"
+#    docker exec -it $CONTAINER_NAME nginx -c /etc/nginx/nginx.conf
+#    echo "$(date +%Y-%m-%d" "%H:%M:%S) Nginx 静态解析重启完成！"
+#else
+#    echo "$(date +%Y-%m-%d" "%H:%M:%S) 扫描结束！Nginx 静态解析正常！"
+#fi
+#
+#if [ "$port" = "2" ]; then
+#    log "6.安装已完成，请自行调整端口映射并进入面板一次以便进行内部配置"
+#else
+#    log "6.安装已完成，请进入面板一次以便进行内部配置"
+#    log "6.1.用户名和密码已显示，请登录 ip:$JD_PORT"
+#    cat $CONFIG_PATH/auth.json
+#    echo -e "\n"
+#fi
+
+# 防止 CPU 占用过高导致死机
+echo -e "-------- 等待一会让青龙启动一下 --------"
+echo -e "-------- 一键互助脚本地址：curl -fsSL https://gitee.com/yanyuwangluo/onekey/raw/master/huzhu/huzhu.sh进容器执行 --------"
+sleep 20
+
+# 显示 auth.json
+#inp "是否显示被修改的密码：\n1) 显示[默认]\n2) 不显示"
+#opt
+#read display
+#if [ "$display" != "2" ]; then
+#    echo -e "\n"
+#    cat $CONFIG_PATH/auth.json
+#    echo -e "\n"
+#    log "6.2.用被修改的密码登录面板并进入"
+#fi  
+
+# token 检测
+#inp "是否已进入面板：\n1) 进入[默认]\n2) 未进入"
+#opt
+#read access
+#log "6.3.观察 token 是否成功生成"
+#cat $CONFIG_PATH/auth.json
+#echo -e "\n"
+#if [ "$access" != "2" ]; then
+#    if [ "$(grep -c "token" $CONFIG_PATH/auth.json)" != 0 ]; then
+#        log "7.开始安装或重装 Ninja"
+#        if [ "$INSTALL_NINJA" = true ]; then
+#            docker exec -it $CONTAINER_NAME bash -c "cd /ql;ps -ef|grep ninja|grep -v grep|awk '{print $1}'|xargs kill -9;rm -rf /ql/ninja;git clone https://ghproxy.com/https://github.com/shufflewzc/ninja.git /ql/ninja;cd /ql/ninja/backend;pnpm install;cp .env.example .env;cp sendNotify.js /ql/scripts/sendNotify.js;sed -i \"s/ALLOW_NUM=40/ALLOW_NUM=100/\" /ql/ninja/backend/.env;pm2 start"
+#            docker exec -it $CONTAINER_NAME bash -c "sed -i \"s/ALLOW_NUM=40/ALLOW_NUM=100/\" /ql/ninja/backend/.env && cd /ql/ninja/backend && pm2 start"
+#        fi
+#        log "8.开始青龙内部配置"
+#        docker exec -it $CONTAINER_NAME bash -c "$(curl -fsSL https://gitee.com/yanyuwangluo/tuku/raw/main/huzhu/huzhu.sh)"
+#    else
+#        warn "8.未检测到 token，取消内部配置"
+#    fi
+#fi
 else
-    echo "$(date +%Y-%m-%d" "%H:%M:%S) 扫描结束！Nginx 静态解析正常！"
+    exit 0
 fi
-
-if [ "$port" = "2" ]; then
-    log "6.用户名和密码已显示，请登录 ip:$QL_PORT"
-    cat $CONFIG_PATH/auth.json
-fi
-
-
-log "enjoy!!!"
