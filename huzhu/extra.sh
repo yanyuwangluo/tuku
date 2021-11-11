@@ -20,7 +20,7 @@
 
 #------ 设置区 ------#
 ## 1. 拉取仓库编号设置，默认 shufflewzc3 仓库
-CollectedRepo=(4) ##示例：CollectedRepo=(2 4 6)
+CollectedRepo=() ##示例：CollectedRepo=(2 4 6)
 OtherRepo=() ##示例：OtherRepo=(1 3)
 ## 2. 是否安装依赖和安装依赖包的名称设置
 dependencies="yes" ##yes为安装，no为不安装
