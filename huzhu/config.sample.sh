@@ -587,8 +587,9 @@ export JD_OPENCARD_EAT_OPEN_OPENCARD=""
 ## 8、8.5-8.12 大牌联合 冰爽一夏 钜惠送好礼
 ### 填写11就是跑到11个ck就停止，填写21就是跑到21个ck就停止，一天最多助力20个ck，推荐10的倍数 +1 填写！！
 export JD_OPENCARD_COOL_SUMMER2=""
-#清空购物车
-export JD_CART="true"
+#清空购物车运行（fake2仓库）
+export JD_CART_REMOVE='true'
+export JD_CART_REMOVEALL='true'
 
 ### 开卡系列通用变量 设置一次永久生效
 export guaopencard_All="true"
