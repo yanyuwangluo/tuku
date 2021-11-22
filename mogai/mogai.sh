@@ -13,11 +13,11 @@
 \e[0m\n"
 sleep 5
 echo 开始执行替换魔改互助文件
-wget -nv https://raw.githubusercontent.com/yanyuwangluo/tuku/main/mogai/task_before.sh -O ~/ql/config/task_before.sh  
+wget https://ghproxy.com/https://raw.githubusercontent.com/yanyuwangluo/tuku/main/mogai/task_before.sh -O ~/ql/config/task_before.sh  
 
-wget https://raw.githubusercontent.com/yanyuwangluo/tuku/main/mogai/code.sh -O ~/ql/config/code.sh
+wget https://ghproxy.com/https://raw.githubusercontent.com/yanyuwangluo/tuku/main/mogai/code.sh -O ~/ql/config/code.sh
 
-wget https://raw.githubusercontent.com/yanyuwangluo/tuku/main/mogai/jdCookie.js -O ~/ql/config/jdCookie.js
+wget https://ghproxy.com/https://raw.githubusercontent.com/yanyuwangluo/tuku/main/mogai/jdCookie.js -O ~/ql/config/jdCookie.js
 
 echo 下载完成
 
