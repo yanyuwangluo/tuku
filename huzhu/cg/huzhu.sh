@@ -313,30 +313,30 @@ fi
 
 
 # 添加定时任务 自动更新模板
-#add_curl_sample() {
-#    if [ "$(grep -c "config.sample.sh" /ql/config/crontab.list)" != 0 ]; then
-#        echo "您的任务列表中已存在 task:自动更新模板"
-#    else
-#        echo "开始添加 task:curl config.sample.sh (可以删除)"
-#        # 获取token
-#        token=$(cat /ql/config/auth.json | jq --raw-output .token)
-#        curl -s -H 'Accept: application/json' -H "Authorization: Bearer $token" -H 'Content-Type: application/json;charset=UTF-8' -H 'Accept-Language: zh-CN,zh;q=0.9' --data-binary '{"name":"自动更新模板(可以删除)","command":"curl -L https://raw.githubusercontent.com/yanyuwangluo/tuku/main/huzhu/config.sample.sh -o /ql/sample/config.sample.sh && cp -rf /ql/sample/config.sample.sh /ql/config","schedule":"45 6,18 * * *"}' --compressed 'http://127.0.0.1:5700/api/crons?t=1627380635389'
-#    fi
-#}
-#run_curl_sample() {
-#    curl -sL $valid_url -o /ql/sample/config.sample.sh && cp -rf /ql/sample/config.sample.sh /ql/config
-#}
-#if [ "${all}" = 1 ]; then
-#    get_valid_config && add_curl_sample && run_curl_sample
-#else
-#    case ${sample} in
-#        0)  echo "已为您跳过自动更新模板"
-#        ;;
-#        1)  get_valid_config && add_curl_sample
-#        ;;
-#        2)  get_valid_config && add_curl_sample && run_curl_sample
-#    esac    
-#fi
+add_curl_sample() {
+    if [ "$(grep -c "config.sample.sh" /ql/config/crontab.list)" != 0 ]; then
+        echo "您的任务列表中已存在 task:自动更新模板"
+    else
+        echo "开始添加 task:curl config.sample.sh (可以删除)"
+        # 获取token
+        token=$(cat /ql/config/auth.json | jq --raw-output .token)
+        curl -s -H 'Accept: application/json' -H "Authorization: Bearer $token" -H 'Content-Type: application/json;charset=UTF-8' -H 'Accept-Language: zh-CN,zh;q=0.9' --data-binary '{"name":"自动更新模板(可以删除)","command":"curl -L https://raw.githubusercontent.com/yanyuwangluo/tuku/main/huzhu/config.sample.sh -o /ql/sample/config.sample.sh && cp -rf /ql/sample/config.sample.sh /ql/config","schedule":"45 6,18 * * *"}' --compressed 'http://127.0.0.1:5700/api/crons?t=1627380635389'
+    fi
+}
+run_curl_sample() {
+    curl -sL $valid_url -o /ql/sample/config.sample.sh && cp -rf /ql/sample/config.sample.sh /ql/config
+}
+if [ "${all}" = 1 ]; then
+    get_valid_config && add_curl_sample && run_curl_sample
+else
+    case ${sample} in
+        0)  echo "已为您跳过自动更新模板"
+        ;;
+        1)  get_valid_config && add_curl_sample
+        ;;
+        2)  get_valid_config && add_curl_sample && run_curl_sample
+    esac    
+fi
 
 
 # 提示配置结束
