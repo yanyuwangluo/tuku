@@ -277,7 +277,7 @@ add_ql_bot() {
         curl -s -H 'Accept: application/json' -H "Authorization: Bearer $token" -H 'Content-Type: application/json;charset=UTF-8' -H 'Accept-Language: zh-CN,zh;q=0.9' --data-binary '{"name":"拉取机器人","command":"ql bot","schedule":"13 14 * * *"}' --compressed 'http://127.0.0.1:5700/api/crons?t=1626247933219'
     fi
 }
- 运行一次并简单设置 bot.json
+#运行一次并简单设置 bot.json
 set_bot_json() {
     ql bot
     echo -e "------ 机器累了，休息 5s ------"
@@ -293,7 +293,7 @@ set_bot_json() {
     sed -i "s/456423156/${api_id}/" $bot_json
     sed -i "s/ASDFAWEFADSFAWEFDSFASFD/${api_hash}/" $bot_json
 }
- 再运行一次 ql bot
+#再运行一次 ql bot
 run_ql_bot() {
     ql bot
     echo -e "------ 机器累了，休息 10s ------"
